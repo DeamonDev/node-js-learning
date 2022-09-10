@@ -27,6 +27,12 @@ const DUMMY_MEALS = [
     description: "Healthy...and green...",
     price: 18.99,
   },
+  {
+    id: "m5",
+    name: "John Paul II meal",
+    description: "For real psychopaths...",
+    price: 21.37,
+  },
 ];
 
 const AvailableMeals = () => {
