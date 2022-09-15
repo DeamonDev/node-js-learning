@@ -38,20 +38,7 @@ const DUMMY_MEALS = [
 ];
 
 const AvailableMeals = () => {
-  const popupCtx = useContext(PopupContext);
 
-  const onMouseEnterEventHandler = (event) => {
-    console.log(popupCtx);
-    popupCtx.showPopup({
-      popupId: "m1",
-      xPos: event.clientX,
-      yPos: event.clientY,
-    });
-  };
-  const onMouseLeaveEventHandler = (event) => {
-    console.log(popupCtx);
-    popupCtx.hidePopup("m1");
-  };
 
   const mealsList = DUMMY_MEALS.map((meal) => (
     <MealItem
@@ -60,8 +47,6 @@ const AvailableMeals = () => {
       name={meal.name}
       description={meal.description}
       price={meal.price}
-      onMouseOver={onMouseEnterEventHandler}
-      onMouseLeave={onMouseLeaveEventHandler}
     />
   ));
 
