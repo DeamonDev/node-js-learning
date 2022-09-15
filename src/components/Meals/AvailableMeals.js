@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import PopupContext from "../../store/popup-context";
 import Card from "../UI/Card";
 import MealItem from "./ MealItem/MealItem";
 import classes from "./AvailableMeals.module.css";
@@ -36,6 +38,21 @@ const DUMMY_MEALS = [
 ];
 
 const AvailableMeals = () => {
+  const popupCtx = useContext(PopupContext);
+
+  const onMouseEnterEventHandler = (event) => {
+    console.log(popupCtx);
+    popupCtx.showPopup({
+      popupId: "m1",
+      xPos: event.clientX,
+      yPos: event.clientY,
+    });
+  };
+  const onMouseLeaveEventHandler = (event) => {
+    console.log(popupCtx);
+    popupCtx.hidePopup("m1");
+  };
+
   const mealsList = DUMMY_MEALS.map((meal) => (
     <MealItem
       key={meal.id}
@@ -43,6 +60,8 @@ const AvailableMeals = () => {
       name={meal.name}
       description={meal.description}
       price={meal.price}
+      onMouseOver={onMouseEnterEventHandler}
+      onMouseLeave={onMouseLeaveEventHandler}
     />
   ));
 

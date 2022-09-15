@@ -15,6 +15,7 @@ const POPUPS = [
 const Popup = (props) => {
   const popupCtx = useContext(PopupContext);
   const isActive = popupCtx.currentId !== null;
+
 };
 
 export default Popup;

@@ -6,6 +6,7 @@ import Meals from "./components/Meals/Meals";
 import Cart from "./components/Cart/Cart";
 import { ReactDOM } from "react-dom";
 import CartProvider from "./store/CartProvider";
+import PopupProvider from "./store/PopupProvider";
 
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);
@@ -19,13 +20,15 @@ function App() {
   };
 
   return (
-    <CartProvider>
-      {cartIsShown && <Cart onClose={hideCartHandler} />}
-      <Header onShowCart={showCartHandler} />
-      <main>
-        <Meals />
-      </main>
-    </CartProvider>
+    <PopupProvider>
+      <CartProvider>
+        {cartIsShown && <Cart onClose={hideCartHandler} />}
+        <Header onShowCart={showCartHandler} />
+        <main>
+          <Meals />
+        </main>
+      </CartProvider>
+    </PopupProvider>
   );
 }
 

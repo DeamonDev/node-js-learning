@@ -1,4 +1,5 @@
 import PopupContext from "./popup-context";
+import { useReducer } from "react";
 
 const defaultPopupState = {
   currentId: null,
@@ -9,9 +10,9 @@ const defaultPopupState = {
 const popupReducer = (state, action) => {
   if (action.type === "SHOW") {
     return {
-      currentId: action.popup.id,
-      xPos: action.popup.xPos,
-      yPos: action.popup.yPos,
+      currentId: action.popupInfo.popupId,
+      xPos: action.popupInfo.xPos,
+      yPos: action.popupInfo.yPos,
     };
   }
 
@@ -45,7 +46,7 @@ const PopupProvider = (props) => {
   };
 
   const popupContext = {
-    currentId: popupState.id,
+    currentId: popupState.currentId,
     xPos: popupState.xPos,
     yPos: popupState.yPos,
     showPopup: showPopupHandler,

@@ -6,23 +6,8 @@ const CartItem = (props) => {
   const popupCtx = useContext(PopupContext);
   const price = `$${props.price.toFixed(2)}`;
 
-  const onMouseEnterEventHandler = (event) => {
-    popupCtx.showPopup({
-      popupId: props.key,
-      xPos: event.clientX,
-      yPos: event.clientY,
-    });
-  };
-  const onMouseLeaveEventHandler = (event) => {
-    popupCtx.hidePopup(props.key);
-  };
-
   return (
-    <li
-      className={classes["cart-item"]}
-      onMouseEnter={onMouseEnterEventHandler}
-      onMouseLeave={onMouseLeaveEventHandler}
-    >
+    <li className={classes["cart-item"]}>
       <div>
         <h2>{props.name}</h2>
         <div className={classes.summary}>
